@@ -43,13 +43,13 @@ func CreateUser() gin.HandlerFunc {
 			Title:    user.Title,
 		}
 
-		result, err := userCollection.InsertOne(ctx, newUser)
+		_, err := userCollection.InsertOne(ctx, newUser)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, responses.UserResponse{Status: http.StatusInternalServerError, Message: "error", Data: map[string]interface{}{"data": err.Error()}})
 			return
 		}
 
-		c.JSON(http.StatusCreated, responses.UserResponse{Status: http.StatusCreated, Message: "success", Data: map[string]interface{}{"data": result}})
+		c.JSON(http.StatusCreated, responses.UserResponse{Status: http.StatusCreated, Message: "success", Data: map[string]interface{}{"data": newUser}})
 	}
 }
 
