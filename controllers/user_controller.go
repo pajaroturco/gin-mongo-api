@@ -135,7 +135,7 @@ func DeleteAUser() gin.HandlerFunc {
 		}
 
 		c.JSON(http.StatusOK,
-			responses.UserResponse{Status: http.StatusOK, Message: "success", Data: map[string]interface{}{"data": "User successfully deleted!"}},
+			responses.UserResponse{Status: http.StatusOK, Message: "success", Data: map[string]interface{}{"message": "User successfully deleted!"}},
 		)
 	}
 }
